@@ -47,6 +47,6 @@ RUN apt-get update \
 
 COPY rootfs/ /
 
-EXPOSE 22
+EXPOSE 2222
 
 ENTRYPOINT ["/init"]
