@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv sh
+
+nslcd --version
+
+if [ ! -z "${DEBUG}" ]; then
+    OPTS="${OPTS:-} --debug"
+fi
+
+exec nslcd --nofork ${OPTS:-}

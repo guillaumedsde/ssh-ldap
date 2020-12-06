@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv sh
+
+if [ -f "${SSHD_CONFIG}" ]; then
+    echo "INFO: found SSH config in ${SSHD_CONFIG}"
+else
+    echo "ERROR: SSH config not found in ${SSHD_CONFIG}"
+    exit 1
+fi
+
+if [ -f "${NSLCD_CONFIG}" ]; then
+    echo "INFO: found nslcd config in ${NSLCD_CONFIG}"
+else
+    echo "ERROR: nslcd config not found in ${NSLCD_CONFIG}"
+    exit 1
+fi
