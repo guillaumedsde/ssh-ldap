@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv sh
+# shellcheck shell=sh
 
 if [ -f "${SSHD_CONFIG}" ]; then
     echo "INFO: found SSH config in ${SSHD_CONFIG}"

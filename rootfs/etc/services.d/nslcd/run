@@ -1,9 +1,10 @@
 #!/usr/bin/with-contenv sh
+# shellcheck shell=sh
 
 nslcd --version
 
-if [ ! -z "${DEBUG}" ]; then
-    OPTS="${OPTS:-} --debug"
+if [ -n "${DEBUG}" ]; then
+    NSLCD_OPTS="${NSLCD_OPTS:-} --debug"
 fi
 
-exec nslcd --nofork ${OPTS:-}
+exec nslcd --nofork ${NSLCD_OPTS:-}
