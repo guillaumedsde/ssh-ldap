@@ -40,9 +40,10 @@ RUN apt-get update \
   && rm "s6.tgz" \
   && apt-get remove --purge -y wget debconf-utils \
   && apt-get --purge -y autoremove \
-  && rm -rf "/var/lib/apt/lists/*" \
+  && rm -rf /var/lib/apt/lists/* \
   && rm "${SSHD_CONFIG}" \
-  && rm "${NSLCD_CONFIG}"
+  && rm "${NSLCD_CONFIG}" \
+  && rm /etc/ssh/ssh_host*
 
 COPY rootfs/ /
 
