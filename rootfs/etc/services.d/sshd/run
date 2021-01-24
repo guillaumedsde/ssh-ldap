@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv sh
 # shellcheck shell=sh
 
-exec /usr/bin/ssh -D -p 2222 ${OPTS:-}
+exec /usr/bin/sshd -D -p 2222 ${OPTS:-}
