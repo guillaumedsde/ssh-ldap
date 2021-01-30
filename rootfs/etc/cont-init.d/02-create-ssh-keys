@@ -4,5 +4,5 @@
 ssh_keys=(/etc/ssh/ssh_host_*)
 
 if [ ! -e "${ssh_keys[0]}" ]; then
-    ssh-keygen -o -a 100 -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+    ssh-keygen -A
 fi
