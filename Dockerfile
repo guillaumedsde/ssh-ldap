@@ -23,6 +23,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
   openssh-server \
   libnss-ldapd \
+  libpam-ldapd \
   wget \
   debconf-utils \
   && ARCH="$(uname -m)" \
