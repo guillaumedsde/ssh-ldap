@@ -1,8 +1,8 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-ssh_keys=(/etc/ssh/ssh_host_*)
+ssh_keys=(/data/ssh_host_*)
 
 if [ ! -e "${ssh_keys[0]}" ]; then
-    ssh-keygen -A
+    ssh-keygen -o -a 100 -t ed25519 -f /data/ssh_host_ed25519_key
 fi

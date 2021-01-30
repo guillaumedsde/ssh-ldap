@@ -49,4 +49,6 @@ COPY rootfs/ /
 
 EXPOSE 2222
 
+VOLUME /data
+
 ENTRYPOINT ["/init"]
