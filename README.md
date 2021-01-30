@@ -22,11 +22,11 @@ This image is based on the work of [`andrespp/docker-ssh-ldap`](https://www.gith
 
 ```bash
 $ docker run  -v /path/to/nslcd.conf:/etc/nslcd.conf:ro \
-              -v /path/to/smb.conf:/etc/ssh/smb.conf:ro \
+              -v /path/to/sshd_config:/config/sshd_config:ro \
               -v /etc/localtime:/etc/localtime:ro \
               -e S6_READ_ONLY_ROOT=1 \
-              -p 139:139 \
-              -p 445:445 \
+              -e OPTS="-f /config/sshd_config" \
+              -p 2222:2222 \
               --read-only \
               --tmpfs /run/sshd \
               --tmpfs /var:rw,exec \
@@ -41,7 +41,7 @@ services:
   guillaumedsde:
     volumes:
       - "/path/to/nslcd.conf:/etc/nslcd.conf:ro"
-      - "/path/to/smb.conf:/etc/ssh/smb.conf:ro"
+      - "/path/to/sshd_config:/config/sshd_config:ro"
       - "/etc/localtime:/etc/localtime:ro"
     read_only: true
     tmpfs:
@@ -49,9 +49,9 @@ services:
       - /var:rw,exec
     environment:
       S6_READ_ONLY_ROOT: "1"
+      OPTS: -f /config/sshd_config
     ports:
-      - "139:139"
-      - "445:445"
+      - "2222:2222"
     image: "guillaumedsde/guillaumedsde/ssh-ldap:latest"
 ```
 
