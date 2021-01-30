@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv sh
 # shellcheck shell=sh
 
-exec /usr/sbin/sshd -D -p 2222 -h /data/ssh_host_ed25519_key -f "${SSHD_CONFIG}" ${OPTS:-}
+exec /usr/sbin/sshd -D -p 2222 -h /config/ssh_host_ed25519_key -f "${SSHD_CONFIG}" ${OPTS:-}
