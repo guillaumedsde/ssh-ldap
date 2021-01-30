@@ -24,7 +24,6 @@ This image is based on the work of [`andrespp/docker-ssh-ldap`](https://www.gith
 $ docker run  -v /path/to/nslcd.conf:/etc/nslcd.conf:ro \
               -v /path/to/smb.conf:/etc/ssh/smb.conf:ro \
               -v /etc/localtime:/etc/localtime:ro \
-              -e "SSHD_LDAP_PASSWORD=${LDAP_ADMIN_PASSWORD}" \
               -e S6_READ_ONLY_ROOT=1 \
               -p 139:139 \
               -p 445:445 \
@@ -49,7 +48,6 @@ services:
       - /run/sshd
       - /var:rw,exec
     environment:
-      SAMBA_LDAP_PASSWORD: "${LDAP_ADMIN_PASSWORD}"
       S6_READ_ONLY_ROOT: "1"
     ports:
       - "139:139"
