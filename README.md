@@ -24,9 +24,11 @@ This image is based on the work of [`andrespp/docker-ssh-ldap`](https://www.gith
 $ docker run  -v /path/to/nslcd.conf:/etc/nslcd.conf:ro \
               -v /path/to/smb.conf:/etc/ssh/smb.conf:ro \
               -v /etc/localtime:/etc/localtime:ro \
-              -e SAMBA_LDAP_PASSWORD=${LDAP_ADMIN_PASSWORD} \
+              -e SSHD_LDAP_PASSWORD=${LDAP_ADMIN_PASSWORD} \
               -p 139:139 \
               -p 445:445 \
+              --read-only \
+              --tmpfs /run/sshd \
               guillaumedsde/guillaumedsde/ssh-ldap:latest
 ```
 
@@ -40,6 +42,9 @@ services:
       - "/path/to/nslcd.conf:/etc/nslcd.conf:ro"
       - "/path/to/smb.conf:/etc/ssh/smb.conf:ro"
       - "/etc/localtime:/etc/localtime:ro"
+    read_only: true
+    tmpfs:
+      - /run/sshd
     environment:
       - "SAMBA_LDAP_PASSWORD=${LDAP_ADMIN_PASSWORD}"
     ports:
