@@ -5,4 +5,5 @@ ssh_keys=(/data/ssh_host_*)
 
 if [ ! -e "${ssh_keys[0]}" ]; then
     ssh-keygen -o -a 100 -t ed25519 -f /data/ssh_host_ed25519_key
+    chmod 700 /data/ssh_host_ed25519_key
 fi
