@@ -1,10 +1,5 @@
 # 🐋 + 📁 + 👤 guillaumedsde/ssh-ldap
 
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/guillaumedsde/ssh-ldap)](https://gitlab.com/guillaumedsde/ssh-ldap/-/pipelines)
-[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/guillaumedsde/ssh-ldap)](https://gitlab.com/guillaumedsde/ssh-ldap/-/pipelines)
-[![Website](https://img.shields.io/website?label=documentation&url=https%3A%2F%2Fguillaumedsde.gitlab.io%2Fssh-ldap%2F)](https://guillaumedsde.gitlab.io/ssh-ldap/)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/guillaumedsde/ssh-ldap?label=version)](https://github.com/guillaumedsde/ssh-ldap/releases)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6bc4aed4e9a64e5ca3e86a39c8fe2a34)](https://www.codacy.com/manual/guillaumedsde/ssh-ldap?utm_source=gitlab.com&utm_medium=referral&utm_content=guillaumedsde/ssh-ldap&utm_campaign=Badge_Grade)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/guillaumedsde/ssh-ldap)](https://hub.docker.com/r/guillaumedsde/ssh-ldap)
 [![Docker Pulls](https://img.shields.io/docker/pulls/guillaumedsde/ssh-ldap)](https://hub.docker.com/r/guillaumedsde/ssh-ldap)
 [![GitHub stars](https://img.shields.io/github/stars/guillaumedsde/ssh-ldap?label=Github%20stars)](https://github.com/guillaumedsde/ssh-ldap)
