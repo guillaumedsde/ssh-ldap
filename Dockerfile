@@ -11,11 +11,13 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
   NSLCD_CONFIG=/etc/nslcd.conf
   
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+# NOTE: perl-base for debconf, see: https://unix.stackexchange.com/a/690050
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
   openssh-server \
   libnss-ldapd \
   libpam-ldapd \
+  perl-base \
   wget \
   debconf-utils \
   && ARCH="$(uname -m)" \
