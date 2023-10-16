@@ -6,18 +6,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG DEBCONF_NONINTERACTIVE_SEEN=true
 ARG S6_VERSION=v2.2.0.3
 
-LABEL org.opencontainers.image.created=$BUILD_DATE \
-    org.opencontainers.image.title="ssh-ldap" \
-    org.opencontainers.image.description="Debian bullseyes based docker image for SSH with ldap authentication" \
-    org.opencontainers.image.revision=$VCS_REF \
-    org.opencontainers.image.source="https://github.com/guillaumedsde/ssh-ldap" \
-    org.opencontainers.image.authors="guillaumedsde" \
-    org.opencontainers.image.vendor="guillaumedsde"
-
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
   SSHD_CONFIG=/etc/ssh/sshd_config \
   NSLCD_CONFIG=/etc/nslcd.conf
-
+  
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
   openssh-server \
@@ -32,7 +25,7 @@ RUN apt-get update \
   else S6_ARCH="${ARCH}"; \
   fi \
   && echo using architecture "${S6_ARCH}" for S6 Overlay \
-  && wget -O "s6.tgz" "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.gz" \
+  && wget --quiet -O "s6.tgz" "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.gz" \
   && tar xzf "s6.tgz" -C / \
   && echo libnss-ldapd libnss-ldapd/nsswitch multiselect passwd, group, shadow | debconf-set-selections -v \
   && echo libnss-ldapd libnss-ldapd/clean_nsswitch boolean true | debconf-set-selections -v \
