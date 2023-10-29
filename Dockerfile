@@ -1,5 +1,5 @@
 
-FROM debian:bookworm-slim
+FROM debian:bullseye-slim
 
 ARG DEBIAN_VERSION
 ARG DEBIAN_FRONTEND=noninteractive 
