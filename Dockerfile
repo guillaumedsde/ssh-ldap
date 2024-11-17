@@ -1,7 +1,6 @@
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
-ARG DEBIAN_VERSION
 ARG DEBIAN_FRONTEND=noninteractive 
 ARG DEBCONF_NONINTERACTIVE_SEEN=true
 ARG S6_VERSION=v2.2.0.3
@@ -9,7 +8,7 @@ ARG S6_VERSION=v2.2.0.3
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
   SSHD_CONFIG=/etc/ssh/sshd_config \
   NSLCD_CONFIG=/etc/nslcd.conf
-  
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # NOTE: perl-base for debconf, see: https://unix.stackexchange.com/a/690050
 RUN apt-get update \
@@ -29,12 +28,7 @@ RUN apt-get update \
   && echo using architecture "${S6_ARCH}" for S6 Overlay \
   && wget --quiet -O "s6.tgz" "https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.gz" \
   && tar xzf "s6.tgz" -C / \
-  && echo libnss-ldapd libnss-ldapd/nsswitch multiselect passwd, group, shadow | debconf-set-selections -v \
-  && echo libnss-ldapd libnss-ldapd/clean_nsswitch boolean true | debconf-set-selections -v \
-  && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure libnss-ldapd \
   && rm "s6.tgz" \
-  && apt-get remove --purge -y wget debconf-utils \
-  && apt-get --purge -y autoremove \
   && rm -rf /var/lib/apt/lists/* \
   && rm "${SSHD_CONFIG}" \
   && rm "${NSLCD_CONFIG}" \
